@@ -26,7 +26,6 @@ button {
     background: black;
     color: white;
     position: relative;
-    padding: 0 12px;
 }
 
 .logo {
@@ -133,7 +132,6 @@ nav {
 
 .discover-text--sub {
     font-size: 55px;
-    line-height: 76px;
     color: white;
     font-weight: 700;
 }
@@ -223,6 +221,7 @@ nav {
 .aboutus--txtcontent p {
     line-height: 35px;
     font-size: 14px;
+    margin: 12px 0;
     
     
 }
@@ -473,9 +472,12 @@ select {
 
 .store--list h1 {
     text-align: center;
-    color: red;
     font-size: 60px;
 
+}
+
+.mapboxgl-control-container {
+    display: none;
 }
 
 .amenities {
@@ -796,5 +798,8 @@ select {
     .photogrid--image, .photogrid--headertext {
         display: none;
     }
+
+
+    
 
 }

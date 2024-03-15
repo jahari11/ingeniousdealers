@@ -9,7 +9,7 @@ export default function Amenities(){
         <div className="amenities">
             <div className="amenitites-content">
             <i class="fa-solid fa-bag-shopping"></i>
-            <p>With your local dealers  for the newest brands in the street</p>
+            <p>Shop with your local dealers  for the newest brands in the street</p>
             </div>
             <div className="amenitites-content">
             <i class="fa-solid fa-user-plus"></i>
