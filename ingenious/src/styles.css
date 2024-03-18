@@ -308,7 +308,6 @@ footer > div {
 
 .shop--textheader {
     text-align: center;
-    color: red;
     font-size: 50px;
 }
 
@@ -709,6 +708,13 @@ select {
 
     .logo {
         padding: 12px 0;
+        margin: auto;
+        
+    }
+
+    .logo h1 {
+       
+        font-size: 24px;
     }
     
     nav {
