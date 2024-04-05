@@ -14,9 +14,56 @@ button {
     cursor: pointer;
 }
 
-.container {
+.password-page {
+    background: url(../src/img/ingeniouspwbg.png);
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-position: center;
+}
+.pw-h {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
 
+.pw-check {
+    color: white;
+}
+.password-page form {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+
+}
+
+.password-page input {
+    padding: 16px 0;
+    border: none;
+    background: rgba(255, 255, 255, 0.13);
+    color: white;
     
+}
+
+.password-page form input::placeholder {
+    color: white;
+    font-weight: 500;
+}
+
+.password-page form button {
+    font-weight: 400;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.13);
+    color: white;
+}
+
+.password-page form button:hover {
+    background: rgba(255, 255, 255, 0.384);
 }
 
 .header {
@@ -694,6 +741,9 @@ select {
     margin: 18px 0;
     color: red;
 }
+
+
+
 
 @media (max-width:896px) {
 
