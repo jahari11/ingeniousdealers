@@ -17,10 +17,6 @@ export default function ServicesGroup (){
         <div className="discover-overlay">
             <h1 className="services--header">Ingenious Dealer Services</h1>
             <p className="services--sub">Discover and hire a professional service provider near you</p>
-            <ServiceSearch />
-            <div className="overlay-btns">
-
-            </div>
         </div>
         <div>
             

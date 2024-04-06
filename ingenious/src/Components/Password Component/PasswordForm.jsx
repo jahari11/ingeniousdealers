@@ -21,22 +21,27 @@ const PasswordForm = ({ setPassword }) => {
   return (
     <div className='password-page'>
       <form onSubmit={handleSubmit}>
-        <input
-          type={showPassword ? "text" : "password"}
-          placeholder='Enter Password'
-          value={passwordInput}
-          onChange={(e) => setPasswordInput(e.target.value)}
-        />
-        <button type='submit'><i className="fa-solid fa-arrow-right"></i></button>
+      <div className="password-input-container">
+          <input
+            className='p-input'
+            type={showPassword ? "text" : "password"}
+            placeholder='Enter Password'
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+          />
+          <button type='submit' className="arrow-button">
+          <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
       </form>
-      <span className='pw-check'>
+      <div className='pw-check'>
           <input
             type="checkbox"
             onChange={togglePasswordVisibility}
             checked={showPassword}
           />
-          Show Password
-        </span>
+          <span>Show Password</span>
+        </div>
       {errorMessage && <div style={{color: 'red'}}>{errorMessage}</div>}
     </div>
   );

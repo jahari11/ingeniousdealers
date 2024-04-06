@@ -14,6 +14,10 @@ button {
     cursor: pointer;
 }
 
+.password-input-container {
+    position: relative;
+  }
+
 .password-page {
     background: url(../src/img/ingeniouspwbg.png);
     background-size: cover;
@@ -25,13 +29,15 @@ button {
     flex-direction: column;
     background-position: center;
 }
-.pw-h {
-    color: white;
-    font-size: 40px;
-    margin-bottom: 12px;
-}
 
 .pw-check {
+   display: flex;
+   align-items: center;
+   text-align: center;
+   gap: 6px;
+}
+
+.pw-check span {
     color: white;
 }
 .password-page form {
@@ -41,29 +47,38 @@ button {
 
 }
 
-.password-page input {
-    padding: 16px 0;
-    border: none;
-    background: rgba(255, 255, 255, 0.13);
-    color: white;
+.p-input {
+    padding: 22px 0;
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.589);
+    width: 300px;
+    text-align: center;
+    color: black;
+    border-radius: 6px;
+    font-weight: 600;
     
 }
 
 .password-page form input::placeholder {
-    color: white;
-    font-weight: 500;
+    color: black;
+    font-weight: 600;
+    text-align: center;
 }
 
-.password-page form button {
-    font-weight: 400;
-    border-radius: 6px;
+.arrow-button {
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-50%);
+    background: none;
     border: none;
-    background: rgba(255, 255, 255, 0.13);
-    color: white;
-}
+    font-size: 18px;
+    cursor: pointer;
+    color: black;
+  }
 
 .password-page form button:hover {
-    background: rgba(255, 255, 255, 0.384);
+    color: white;
 }
 
 .header {
