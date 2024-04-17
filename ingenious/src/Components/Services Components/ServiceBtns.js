@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import servicesData from "./servicesData";
 
 
-export default function ServiceBtns({menuItems, filterItems, setItems}) {
+export default function ServiceBtns({dealerCity,filterItemsByCity, menuItems, filterItems, setItems}) {
 
   return (
     <div className="service-btns">
@@ -12,6 +12,14 @@ export default function ServiceBtns({menuItems, filterItems, setItems}) {
       {
         menuItems.map(val => (
           <button className="service-btn" onClick={() => filterItems(val)}>{val}</button>
+        ))
+      }
+      <div className="service-btns-title">
+        <span>Choose your city:</span>
+      </div>
+      {
+        dealerCity.map(cityVal => (
+          <button className="service-btn" onClick={()=> filterItemsByCity(cityVal)}>{cityVal}</button>
         ))
       }
       <button className="service-btn" onClick={() => setItems(servicesData)}>All</button>

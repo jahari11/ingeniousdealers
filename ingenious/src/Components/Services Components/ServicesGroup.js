@@ -1,9 +1,5 @@
+import serviceImage from '../../img/SERVICEBG.jpg'
 
-import ServiceSearch from "../Home Components/ServiceSearch"
-import ServiceBtns from "./ServiceBtns";
-import serviceImage from '../../img/serviceImage.jpg'
-
-import ServicesComponent from '../Services Components/ServicesComponent'
 
 
 export default function ServicesGroup (){
