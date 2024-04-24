@@ -20,6 +20,7 @@ export default function Home () {
     })
     return (
         <>
+
             <Navbar />
             <DiscoverImage />
             <div className="service-search-text">

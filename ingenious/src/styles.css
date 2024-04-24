@@ -173,6 +173,7 @@ nav {
 
 .links a {
     color: white;
+    margin: 0 12px;
 }
 
 
@@ -284,6 +285,7 @@ nav {
     line-height: 35px;
     font-size: 14px;
     margin: 12px 0;
+    text-align: justify;
     
     
 }
@@ -756,6 +758,107 @@ select {
     margin: 18px 0;
     color: red;
 }
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-container {
+    position: relative;
+    display: flex;
+    max-width: 350px;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: #212121;
+    border: 1px solid #fff;
+    padding: 1.6rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.card-header {
+    position: relative;
+    margin: 0;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.card-header p {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.card-price {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 4rem;
+    color: #fff;
+}
+
+.card-price span:first-child {
+    margin-top: 10px;
+    font-size: 2rem;
+    line-height: 2.25rem;
+    color: white;
+}
+
+.card-price span:last-child {
+    align-self: flex-end;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    color: white;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.list span {
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background-color: rgba(255, 255, 255, 0.185);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-btn {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.card-btn button {
+    display: block;
+    width: 100%;
+    background-color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    color: #000;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
 
 
 

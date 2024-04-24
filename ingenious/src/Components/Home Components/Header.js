@@ -1,5 +1,5 @@
 import React from "react"
-import headerlogo from "../../img/IG headerlogo.png"
+import { Link } from "react-router-dom"
 
 
 
@@ -13,8 +13,7 @@ export default function Header () {
             <h1>INGENIOUS DEALERS</h1>
         </div>
         <div className="links">
-                    <a href="">Find a Store</a>
-                    <a href="">Subscriptions</a>
+                    <Link to="/subscriptions">Subscriptions</Link>
         </div>
         </div>
     )

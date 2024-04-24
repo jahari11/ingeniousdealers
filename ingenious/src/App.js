@@ -2,6 +2,8 @@ import React, {useState} from "react"
 import Home from "./pages/Home"
 import Shop from "./pages/Shop"
 import Services from "./pages/Services";
+import Subscriptions from "./pages/Subscriptions";
+import Navbar from "./Components/Home Components/Navbar";
 import PasswordForm from "./Components/Password Component/PasswordForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,11 +21,13 @@ export default function App() {
     return (
         <div className="container">
             <BrowserRouter>
+            
             <Routes>
                 <Route index element = {!loggedIn ? (<PasswordForm setPassword={handlePasswordSubmit} />) : (<Home />) } />
                 <Route path="/home" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Home />}/>
                 <Route path="/shop" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Shop />} />
                 <Route path="/services" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Services />} />
+                <Route path="/subscriptions" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Subscriptions />} />
             </Routes>
             </BrowserRouter>
         </div>
