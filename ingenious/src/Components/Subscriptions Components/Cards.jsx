@@ -3,6 +3,10 @@ import CardContent from './cardDetails'
 
 const Cards = () => {
   return (
+    <div className='section'>
+        <h1 className='subscription-title'>Ingenious Dealers Subscription Tier</h1>
+        <p className='subscription-sub'>Choose the plan that's right for your business.</p>
+        <p className='subscription-sub'>Whether you just started or well down the path, we're here to assist you!</p>
     <div className='cards'>
     {CardContent.map(card => (
         <div className='card-container'>
@@ -26,7 +30,7 @@ const Cards = () => {
     </div>
     </div>
     ))}
-    
+    </div>
     </div>
   )
 }

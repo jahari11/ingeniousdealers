@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     font-family: "Barlow", sans-serif;
+   
 }
 
 a {
@@ -12,6 +13,11 @@ a {
 
 button {
     cursor: pointer;
+} 
+
+
+.section {
+    min-height: 70vh;
 }
 
 .password-input-container {
@@ -81,37 +87,7 @@ button {
     color: white;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: black;
-    color: white;
-    position: relative;
-}
 
-.logo {
-   font-size: 1.5rem;
-   text-align: center;
-    
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-nav {
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px;
-    background: black;
-    margin-bottom: 30px;
-    
-}
 
 
 
@@ -123,15 +99,11 @@ nav {
     color: white;
 }
 
-.navigation a {
-    margin: 0 8px;
-    text-decoration: none;
-    color: white;
-}
 
-.navigation a:hover {
-    text-decoration: underline;
-}
+
+
+
+
 
 .search-container {
     gap: 10px;
@@ -159,12 +131,64 @@ nav {
     text-transform: uppercase;
 }
 
-.left-div {
-    color: black;
+.navbar{
+    background-color: black;
+    padding: 0 12px;
+    margin-bottom: 20px;
 }
 
+.logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
 
+.logo-log {
+    position: absolute;
+    right: 12px;
+    
+}
+
+.logo-log a {
+    color: white;
+}
+
+.logo {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 50px;
+}
+
+.navbar-022 {
+    display: flex;
+    gap: 20px;
+   padding: 0 12px;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-size: 18px;
+}
+
+.navbar-links02{
+    display: flex;
+    gap: 30px;
+    margin:0 auto;
+}
+
+.navbar-links02 a {
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-links a {
+    color: white;
+}
 
 .links {
     display: flex;
@@ -350,12 +374,14 @@ nav {
 
 
 footer {
+    width: 100%;
     background-color: black;
     color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    flex-shrink: 0;
+    overflow: hidden;
+    height: 200px;
 }
 
 footer a {
@@ -531,6 +557,14 @@ select {
 .store--grid {
     padding: 20px;
     text-align: center;
+}
+
+.store--grid a {
+    color: black;
+}
+
+.store--grid a:hover {
+    color: #212121;
 }
 
 .store--list h1 {
@@ -761,7 +795,8 @@ select {
 
 .cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
 }
 
 .card-container {
@@ -859,37 +894,80 @@ select {
     border-radius: 10px;
 }
 
+.slide-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0f0f0f;
+    transform-origin: bottom;
+}
+
+.slide-out {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0f0f0f;
+    transform-origin: top;
+}
+
+.subscription-title {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.subscription-sub {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.store-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.store-details-container img{
+    width: 450px;
+    object-fit: cover;
+}
+
+.store-location {
+    margin: 6px 0;
+}
+
+.store-description {
+    margin: 50px 0;
+    text-align: center;
+    font-size: 20px;
+
+}
+
 
 
 
 
 @media (max-width:896px) {
 
-    .header {
-        flex-wrap: wrap;
-    }
-
-    .links {
+    .navbar {
         display: flex;
-        margin: auto;
+        flex-direction: column;
     }
 
-    .logo {
-        padding: 12px 0;
-        margin: auto;
-        
-    }
-
-    .logo h1 {
-       
-        font-size: 24px;
-    }
-    
-    nav {
-        flex-wrap: wrap;
+    .navbar-022 {
+        display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
-
    .shopcard--icon {
     width: 100%;
    }
@@ -971,6 +1049,10 @@ select {
 
     .photogrid--image, .photogrid--headertext {
         display: none;
+    }
+
+    .cards {
+        flex-wrap: wrap;
     }
 
 

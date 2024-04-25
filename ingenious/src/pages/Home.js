@@ -1,15 +1,15 @@
 import Navbar from "../Components/Home Components/Navbar"
-import Header from "../Components/Home Components/Header"
 import DiscoverImage from "../Components/Home Components/DiscoverImage"
 import ServiceSearch from "../Components/Home Components/ServiceSearch"
 import AboutUs from "../Components/Home Components/AboutUs"
-import Footer from "../Components/Footer"
 import ServiceImgWrapper from "../Components/Home Components/ServicesImgWrapper"
 import Amenities from "../Components/Home Components/Amenities"
 import data from "../servicedata"
 import PhotoGrid from "../Components/Home Components/PhotoGrid"
+import { motion } from 'framer-motion'
+import Footer from "../Components/Footer"
 
-export default function Home () {
+const Home = () => {
     const services = data.map(item => {
         return (
             <ServiceImgWrapper
@@ -19,8 +19,13 @@ export default function Home () {
         )
     })
     return (
-        <>
-
+        <div className="container">
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        transition={{duration: 0.8}}
+        >
             <Navbar />
             <DiscoverImage />
             <div className="service-search-text">
@@ -34,6 +39,9 @@ export default function Home () {
             </div>
             <PhotoGrid />
             <Footer />
-        </>
+        </motion.div>
+        </div>
     )
 }
+
+export default Home;
