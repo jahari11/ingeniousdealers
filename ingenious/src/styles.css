@@ -1051,6 +1051,10 @@ select {
         display: none;
     }
 
+    .store-details-container img {
+        width: 350px;
+    }
+
     .cards {
         flex-wrap: wrap;
     }
