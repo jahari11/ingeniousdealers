@@ -5,6 +5,9 @@ import ShopCardIcon from "./ShopCardIcon";
 export default function ShopCard () {
     return (
         <div className="shop--wrapper">
+            <div className="shop--card--header">
+            <span >Dealers Top Picks of The Month</span>
+            </div>
         <div className="shop--card">
             <div className="dropdown">
                 <select name="" id="shop--location--dropdown">

@@ -4,20 +4,12 @@ import ServiceSearch from "../Components/Home Components/ServiceSearch"
 import AboutUs from "../Components/Home Components/AboutUs"
 import ServiceImgWrapper from "../Components/Home Components/ServicesImgWrapper"
 import Amenities from "../Components/Home Components/Amenities"
-import data from "../servicedata"
 import PhotoGrid from "../Components/Home Components/PhotoGrid"
 import { motion } from 'framer-motion'
 import Footer from "../Components/Footer"
 
 const Home = () => {
-    const services = data.map(item => {
-        return (
-            <ServiceImgWrapper
-            key = {item.id}
-            img = {item.servicePhoto}
-            description = {item.description} />
-        )
-    })
+    
     return (
         <div className="container">
         <motion.div
@@ -35,7 +27,7 @@ const Home = () => {
             <AboutUs />
             <Amenities />
             <div className="services">
-            {services}
+                <ServiceImgWrapper />
             </div>
             <PhotoGrid />
             <Footer />
