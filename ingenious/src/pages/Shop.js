@@ -7,7 +7,7 @@ import Navbar from "../Components/Home Components/Navbar";
 import { motion } from 'framer-motion'
 const Shop = () => {
     return (
-        <div className="container">
+        <div>
         <motion.div
         initial={{opacity: 0}}
         animate={{opacity: 1}}

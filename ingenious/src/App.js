@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import PasswordForm from "./Components/Password Component/PasswordForm";
 import { useLocation, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import Login from "./pages/Login";
 import StorePage from "./pages/StorePage";
 
 
@@ -34,6 +35,7 @@ export default function App() {
                 <Route path="/services" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Services />} />
                 <Route path="/subscriptions" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Subscriptions />} />
                 <Route path="/store/:storeId" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <StorePage />} />
+                <Route path="/login" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Login />} />
             </Routes>
             </AnimatePresence>
         </div>

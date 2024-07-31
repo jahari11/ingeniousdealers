@@ -11,7 +11,7 @@ import Footer from "../Components/Footer"
 const Home = () => {
     
     return (
-        <div className="container">
+        <div className="">
         <motion.div
         initial={{opacity: 0}}
         animate={{opacity: 1}}
