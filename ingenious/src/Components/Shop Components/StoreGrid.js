@@ -10,16 +10,18 @@ export default function StoreGrid () {
         <div className="store--list">
             <h1>Store List</h1>
         </div>
-        <div className="grid justify-items-center grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="w-full px-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {storeData.map(store => (
                 <div>
                     <Link to={`/store/${store.id}`}>
-                    <img src={store.storeImage} alt="" className="store--img" />
-                    <h3>{store.storeName}</h3>
-                    <p>{store.storeLocation}</p>
+                    <img src={store.storeImage} alt="" className="h-40 w-full max-w-full rounded-lg object-cover object-center" />
+                    <h3 className="text-center font-bold">{store.storeName}</h3>
+                    <p className="text-center">{store.storeLocation}</p>
                     </Link>
                 </div>
             ))}
+        </div>
         </div>
         </>
     )

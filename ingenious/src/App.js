@@ -10,6 +10,7 @@ import { useLocation, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Login from "./pages/Login";
 import StorePage from "./pages/StorePage";
+import Register from "./pages/Register";
 
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
                 <Route path="/subscriptions" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Subscriptions />} />
                 <Route path="/store/:storeId" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <StorePage />} />
                 <Route path="/login" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Login />} />
+                <Route path="/register" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Register />} />
             </Routes>
             </AnimatePresence>
         </div>
