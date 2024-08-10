@@ -24,7 +24,6 @@ const Home = () => {
                 <span>Discover and book your fashion near you!</span>
             </div>
             <ServiceSearch />
-            <AboutUs />
             <Amenities />
             <div className="services">
                 <ServiceImgWrapper />

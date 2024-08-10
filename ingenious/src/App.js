@@ -11,6 +11,7 @@ import { AnimatePresence } from "framer-motion";
 import Login from "./pages/Login";
 import StorePage from "./pages/StorePage";
 import Register from "./pages/Register";
+import About from "./pages/About";
 
 
 export default function App() {
@@ -32,12 +33,13 @@ export default function App() {
             <Routes location={location} key={location.pathname}>
                 <Route index element = {!loggedIn ? (<PasswordForm setPassword={handlePasswordSubmit} />) : (<Home />) } />
                 <Route path="/home" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Home />}/>
-                <Route path="/shop" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Shop />} />
+                <Route path="/local-dealers" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Shop />} />
                 <Route path="/services" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Services />} />
                 <Route path="/subscriptions" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Subscriptions />} />
                 <Route path="/store/:storeId" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <StorePage />} />
                 <Route path="/login" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Login />} />
                 <Route path="/register" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Register />} />
+                <Route path="/about" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <About />} />
             </Routes>
             </AnimatePresence>
         </div>
