@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className='flex justify-center gap-8'>
           <Link className='text-white text-xl font-semibold' to='/'>Home</Link>
           <Link className='text-white text-xl font-semibold' to='/local-dealers'>Local Dealers</Link>
-          <Link className='text-white text-xl font-semibold' to='/ingenious-dealers'>Ingenious Dealers</Link>
+          <Link className='text-white text-xl font-semibold' to='/ingenious-store'>Ingenious Dealers</Link>
           <Link className='text-white text-xl font-semibold' to='/services'>Services</Link>
           <Link className='text-white text-xl font-semibold' to='/subscriptions'>Subscriptions</Link>
           <Link className='text-white text-xl font-semibold' to='/about'>About</Link>
@@ -88,11 +88,15 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className='md:hidden mt-3'>
           <div className='flex flex-col gap-8'>
-            <Link className='text-white text-lg font-semibold' to='/'>Home</Link>
-            <Link className='text-white text-lg font-semibold' to='/shop'>Shop</Link>
-            <Link className='text-white text-lg font-semibold' to='/services'>Services</Link>
-            <Link className='text-white text-lg font-semibold' to='/subscriptions'>Subscriptions</Link>
-            <Link className='text-white text-lg font-semibold' to='/login'>Login / Register</Link>
+          <Link className='text-white text-xl font-semibold' to='/'>Home</Link>
+          <Link className='text-white text-xl font-semibold' to='/local-dealers'>Local Dealers</Link>
+          <Link className='text-white text-xl font-semibold' to='/ingenious-store'>Ingenious Dealers</Link>
+          <Link className='text-white text-xl font-semibold' to='/services'>Services</Link>
+          <Link className='text-white text-xl font-semibold' to='/subscriptions'>Subscriptions</Link>
+          <Link className='text-white text-xl font-semibold' to='/about'>About</Link>
+          <Link className='text-white text-xl font-semibold' to='/login'>
+          Login / Register
+        </Link>
           </div>
           <div className='flex gap-8 mt-4'>
             <Link to='https://www.instagram.com/ingeniousdealers/' className='text-white text-xl'>

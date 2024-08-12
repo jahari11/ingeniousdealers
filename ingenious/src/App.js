@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import StorePage from "./pages/StorePage";
 import Register from "./pages/Register";
 import About from "./pages/About";
+import IngeniousStore from "./pages/IngeniousStore";
+import IgStoreId from "./pages/IgStoreId";
 
 
 export default function App() {
@@ -40,6 +42,8 @@ export default function App() {
                 <Route path="/login" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Login />} />
                 <Route path="/register" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <Register />} />
                 <Route path="/about" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <About />} />
+                <Route path="/ingenious-store" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <IngeniousStore />} />
+                <Route path="/ingenious-store/:id" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <IgStoreId />} />
             </Routes>
             </AnimatePresence>
         </div>

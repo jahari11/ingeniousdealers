@@ -1,8 +1,6 @@
 import Navbar from "../Components/Home Components/Navbar"
 import DiscoverImage from "../Components/Home Components/DiscoverImage"
 import ServiceSearch from "../Components/Home Components/ServiceSearch"
-import AboutUs from "../Components/Home Components/AboutUs"
-import ServiceImgWrapper from "../Components/Home Components/ServicesImgWrapper"
 import Amenities from "../Components/Home Components/Amenities"
 import PhotoGrid from "../Components/Home Components/PhotoGrid"
 import { motion } from 'framer-motion'
@@ -25,9 +23,6 @@ const Home = () => {
             </div>
             <ServiceSearch />
             <Amenities />
-            <div className="services">
-                <ServiceImgWrapper />
-            </div>
             <PhotoGrid />
             <Footer />
         </motion.div>
