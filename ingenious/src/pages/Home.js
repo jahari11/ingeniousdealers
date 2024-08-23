@@ -5,6 +5,7 @@ import Amenities from "../Components/Home Components/Amenities"
 import PhotoGrid from "../Components/Home Components/PhotoGrid"
 import { motion } from 'framer-motion'
 import Footer from "../Components/Footer"
+import HomeCard from "../Components/Home Components/HomeCard"
 
 const Home = () => {
     
@@ -23,6 +24,7 @@ const Home = () => {
             </div>
             <ServiceSearch />
             <Amenities />
+            <HomeCard />
             <PhotoGrid />
             <Footer />
         </motion.div>
