@@ -24,7 +24,6 @@ const Home = () => {
             </div>
             <ServiceSearch />
             <Amenities />
-            <HomeCard />
             <PhotoGrid />
             <Footer />
         </motion.div>
