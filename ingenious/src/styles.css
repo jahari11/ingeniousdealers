@@ -68,6 +68,10 @@ button {
     
 }
 
+.p-input::placeholder {
+    color: black;
+}
+
 .password-page form input::placeholder {
     color: black;
     font-weight: 600;
