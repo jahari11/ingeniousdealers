@@ -15,7 +15,7 @@ const Shop = () => {
         transition={{duration: 0.8}}
         >
         <Navbar />
-        <h1 className="shop--textheader">Shop With Your Local Dealers</h1>
+        <h2 className="text-xl font-bold uppercase text-black text-center sm:text-9xl">Shop With Your Local Dealers</h2>
         <LocalDealerGrid />
         <ShopWrapper />
         <StoreGrid />

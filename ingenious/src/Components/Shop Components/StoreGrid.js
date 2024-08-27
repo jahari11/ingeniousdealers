@@ -8,7 +8,7 @@ export default function StoreGrid () {
     return (
     <>
         <div className="store--list">
-            <h1>Store List</h1>
+        <h2 className="text-xl font-bold uppercase text-black text-center sm:text-6xl">Store List</h2>
         </div>
         <div className="w-full px-2">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">

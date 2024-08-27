@@ -8,7 +8,6 @@ export default function DiscoverImage (){
         <div className="discover-container">
             <video loop autoPlay src={igMovie} alt="" className="discoimg" />
             <div className="discover-overlay">
-                <span className="discover-text--head">Ingenious Dealers</span>
                 <h1 className="discover-text--sub">Discover A Fashion Hub In Your City</h1>
                 <div className="discover-btn-group">
                     <button>Explore Now</button>
