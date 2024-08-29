@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 export default function ServicesComponent ({item}) {
     return (
         <div className="services-component-wrapper">
-                {item.map((val) =>(
+            {item.map((val) =>(
+            <Link to={`/service/${val.id}`}>
             <div key ={val.id} className="service-component">
                     <img src={val.dealerImg} alt="" />
             <div className="service-name-text">
@@ -13,6 +15,7 @@ export default function ServicesComponent ({item}) {
                 <span>Lorem ipsum dolor sit amet, consectetur</span>
             </div>
             </div>
+            </Link>
                 ))}
         </div>
     )

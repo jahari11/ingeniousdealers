@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className='flex justify-center gap-8'>
           <Link className='text-white text-xl font-semibold' to='/'>Home</Link>
           <Link className='text-white text-xl font-semibold' to='/local-dealers'>Local Dealers</Link>
-          <Link className='text-white text-xl font-semibold' to='/ingenious-store'>Ingenious Dealers</Link>
+          <Link className='text-white text-xl font-semibold' to='/ingenious-shop'>Ingenious Shop</Link>
           <Link className='text-white text-xl font-semibold' to='/services'>Services</Link>
           <Link className='text-white text-xl font-semibold' to='/subscriptions'>Subscriptions</Link>
           <Link className='text-white text-xl font-semibold' to='/about'>About</Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
           <div className='flex flex-col gap-8'>
           <Link className='text-white text-xl font-semibold' to='/'>Home</Link>
           <Link className='text-white text-xl font-semibold' to='/local-dealers'>Local Dealers</Link>
-          <Link className='text-white text-xl font-semibold' to='/ingenious-store'>Ingenious Dealers</Link>
+          <Link className='text-white text-xl font-semibold' to='/ingenious-shop'>Ingenious Shop</Link>
           <Link className='text-white text-xl font-semibold' to='/services'>Services</Link>
           <Link className='text-white text-xl font-semibold' to='/subscriptions'>Subscriptions</Link>
           <Link className='text-white text-xl font-semibold' to='/about'>About</Link>
