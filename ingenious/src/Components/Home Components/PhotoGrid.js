@@ -5,7 +5,7 @@ export default function PhotoGrid () {
     return (
         <>
         <div className="photogrid--headertext">
-            <span>What's new on ingenious</span>
+            <span className="text-xl font-bold uppercase text-black text-center sm:text-7xl">What's new on ingenious</span>
         </div>
             <div className="photogrid--image">
                 {photogridImages.map(images => (

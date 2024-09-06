@@ -22,8 +22,7 @@ const IngeniousStore = () => {
       <h2 className="text-xl font-bold uppercase text-black sm:text-9xl">Ingenious Shop</h2>
 
       <p className="mt-4 max-w-md text-gray-500">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
-        dicta incidunt est ipsam, officia dolor fugit natus?
+        Inspired by 80's & 90's nostalgic workwear era blended with modern styles and trends.
       </p>
     </header>
 
