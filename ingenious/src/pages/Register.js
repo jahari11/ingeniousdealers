@@ -83,10 +83,11 @@ const Register = () => {
             id="subscription"
             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
           >
-            <option value="">Select Subscription Tier</option>
-            <option value="basic">Starter</option>
-            <option value="premium">Pro</option>
-            <option value="pro">Platnium</option>
+            <option value="">Select a option</option>
+            <option value="basic">Photographer</option>
+            <option value="premium">Model</option>
+            <option value="pro">Seamstress</option>
+            <option value="pro">Designer</option>
           </select>
         </div>
       </div>
