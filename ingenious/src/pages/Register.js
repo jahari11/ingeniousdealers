@@ -84,10 +84,11 @@ const Register = () => {
             className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
           >
             <option value="">Select a option</option>
-            <option value="basic">Photographer</option>
-            <option value="premium">Model</option>
-            <option value="pro">Seamstress</option>
-            <option value="pro">Designer</option>
+            <option value="photographer">Photographer</option>
+            <option value="model">Model</option>
+            <option value="seamstress">Seamstress</option>
+            <option value="designer">Designer</option>
+            <option value="local-dealer">Local Dealer</option>
           </select>
         </div>
       </div>
@@ -125,7 +126,9 @@ const Register = () => {
           type="submit"
           className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
         >
-          Register
+          Continue &rarr;
+
+          
         </button>
       </div>
     </form>
