@@ -2,10 +2,10 @@ import React from "react";
 import ServicesGroup from "../Components/Services Components/ServicesGroup";
 import Footer from "../Components/Footer";
 import ServicesDescription from "../Components/Services Components/ServicesDescription";
-import ServicesList from "../Components/Services Components/ServicesList";
 import ServiceAmenities from "../Components/Services Components/ServicesAmenities";
 import Navbar from "../Components/Home Components/Navbar";
 import { motion } from 'framer-motion'
+import ServiceCard from "../Components/Services Components/ServiceCard";
 
 
 
@@ -21,7 +21,7 @@ const About = () => {
         <ServicesGroup />
         <ServicesDescription/>
         <ServiceAmenities />
-        <ServicesList />
+        <ServiceCard />
         <Footer />
         </motion.div>
         </div>
