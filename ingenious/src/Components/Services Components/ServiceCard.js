@@ -7,11 +7,9 @@ const ServiceCard = () => {
   const [filterType, setFilterType] = useState('');
   const [filterCity, setFilterCity] = useState('');
 
-  // State for filter options
   const [typesOptions, setTypesOptions] = useState([]);
   const [citiesOptions, setCitiesOptions] = useState([]);
 
-  // Effect to initialize filter options
   useEffect(() => {
     // Example: Fetch options from a database
     // Replace the following arrays with API data fetching
