@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Footer from '../Components/Footer'
 import { Link } from 'react-router-dom'
 
+
 const IgStoreId = () => {
     const {id} = useParams()
     const product = IngeniousStoreData.find((item)=> item.id === parseInt(id));

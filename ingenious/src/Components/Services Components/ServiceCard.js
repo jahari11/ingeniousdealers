@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ServicesData from '../Services Components/servicesData'; // Adjust the path as necessary
+import { Link } from 'react-router-dom';
 
 const ServiceCard = () => {
   // State for filter values
@@ -39,7 +40,7 @@ const ServiceCard = () => {
           className="px-5 py-2.5 border-black text-black text-sm outline-none bg-white hover:bg-gray-50">
           <option value="">All Types</option>
           {typesOptions.map((type, index) => (
-            <option key={index} value={type}>{type}</option>
+            <option className='capitalize' key={index} value={type}>{type}</option>
           ))}
         </select>
       </div>
@@ -54,7 +55,7 @@ const ServiceCard = () => {
         >
           <option value="">All Cities</option>
           {citiesOptions.map((city, index) => (
-            <option key={index} value={city}>{city}</option>
+            <option className='capitalize' key={index} value={city}>{city}</option>
           ))}
         </select>
       </div>
@@ -63,14 +64,14 @@ const ServiceCard = () => {
       {/* Render Cards */}
       <div className="flex flex-wrap gap-4 justify-center">
         {filteredData.map(dealer => (
-          <div key={dealer.id} className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden">
+          <Link to={`/service/${dealer.id}`} key={dealer.id} className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden">
             <img className="w-full h-48 object-cover" src={dealer.dealerImg} alt={dealer.dealerName} />
             <div className="p-4">
-              <h2 className="text-lg font-bold text-gray-900">{dealer.dealerName}</h2>
-              <p className="text-sm text-gray-600">{dealer.dealerType}</p>
-              <p className="text-sm text-gray-600">{dealer.dealerCity}</p>
+              <h2 className="text-lg font-bold text-gray-900 capitalize">{dealer.dealerName}</h2>
+              <p className="text-sm text-gray-600 capitalize">{dealer.dealerType}</p>
+              <p className="text-sm text-gray-600 capitalize">{dealer.dealerCity}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
