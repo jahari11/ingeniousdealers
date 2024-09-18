@@ -1,11 +1,12 @@
 import React from "react";
 import LocalDealerGrid from "../Components/Shop Components/LocalDealerGrid";
-import ShopWrapper from "../Components/Shop Components/ShopWrapper";
 import StoreGrid from "../Components/Shop Components/StoreGrid";
-import Map from "../Components/Shop Components/Map";
+
 import Footer from "../Components/Footer"
 import Navbar from "../Components/Home Components/Navbar";
 import { motion } from 'framer-motion'
+import StoreMap from "../Components/Shop Components/StoreMap";
+
 const Shop = () => {
     return (
         <div>
@@ -18,7 +19,7 @@ const Shop = () => {
         <Navbar />
         <h2 className="text-xl font-bold uppercase text-black text-center sm:text-7xl m-7">Shop With Your Local Dealers</h2>
         <LocalDealerGrid />
-        <Map />
+        <StoreMap />
         <StoreGrid />
         <Footer />
         </motion.div>

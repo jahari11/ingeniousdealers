@@ -4,7 +4,8 @@ import ServicesData from '../Components/Services Components/servicesData';
 import Navbar from '../Components/Home Components/Navbar';
 import { motion } from 'framer-motion';
 import Footer from '../Components/Footer';
-import GridCarousel from 'react-grid-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css'; 
 
 const ServiceId = () => {
     const { id } = useParams();
@@ -32,24 +33,28 @@ const ServiceId = () => {
             <Navbar />
             <div className='section'>
                 <div className='flex justify-center flex-col items-center my-8 p-4'>
-                    <GridCarousel
-                        cols={1}
-                        rows={1}
-                        gap={10}
-                        loop
-                        autoplay={3000}
-                        showDots
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{ clickable: true }}
+                        loop={true}
+                        style={{ width: '100%', maxWidth: '600px' }} // Set max width for mobile compatibility
                     >
                         {images.map((imgSrc, index) => (
-                            <GridCarousel.Item key={index}>
+                            <SwiperSlide key={index} style={{ display: 'flex', justifyContent: 'center' }}>
                                 <img
-                                    className='mx-auto object-cover rounded-md'
+                                    className='obj'
                                     src={imgSrc}
                                     alt={`Service ${index + 1}`}
+                                    style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} // Maintain original size
                                 />
-                            </GridCarousel.Item>
+                            </SwiperSlide>
                         ))}
-                    </GridCarousel>
+                    </Swiper>
                     <h3 className='text-3xl mt-3 font-bold uppercase'>{service.dealerName}</h3>
                     <h3 className='text-2xl font-bold uppercase'>{service.dealerCity}</h3>
                     <h4 className='font-semibold text-xl'>{service.dealerType}</h4>

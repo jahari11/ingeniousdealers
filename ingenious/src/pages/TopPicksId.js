@@ -1,17 +1,18 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import topPicks from '../Components/Data/topPicks';
 import { motion } from 'framer-motion';
 import Navbar from '../Components/Home Components/Navbar';
 import Footer from '../Components/Footer';
-import GridCarousel from 'react-grid-carousel'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 
 const TopPicksId = () => {
-    const {id} = useParams();
-    const topPick = topPicks.find((item)=> item.id === parseInt(id))
+    const { id } = useParams();
+    const topPick = topPicks.find((item) => item.id === parseInt(id));
 
     if (!topPick) {
-        return <div>Not found</div>
+        return <p>Not found</p>;
     }
 
     const images = [
@@ -22,9 +23,7 @@ const TopPicksId = () => {
         // Add more image URLs as needed
     ];
 
- 
-  return (
-    
+    return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -34,27 +33,31 @@ const TopPicksId = () => {
             <Navbar />
             <div className='section'>
                 <div className='flex justify-center flex-col items-center my-8 p-4'>
-                    <GridCarousel
-                        cols={1}
-                        rows={1}
-                        gap={10}
-                        loop
-                        autoplay={3000}
-                        showDots
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{ clickable: true }}
+                        loop={true}
+                        style={{ width: '100%', maxWidth: '600px' }} // Set max width for mobile compatibility
                     >
                         {images.map((imgSrc, index) => (
-                            <GridCarousel.Item key={index}>
+                            <SwiperSlide key={index} style={{ display: 'flex', justifyContent: 'center' }}>
                                 <img
-                                    className='mx-auto object-cover rounded-md'
+                                    className='obj'
                                     src={imgSrc}
-                                    alt={`Service ${index + 1}`}
+                                    alt={`Top Pick ${index + 1}`}
+                                    style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} // Maintain original size
                                 />
-                            </GridCarousel.Item>
+                            </SwiperSlide>
                         ))}
-                    </GridCarousel>
-                    <h3 className='text-3xl mt-3 font-bold uppercase text-center'>{topPick.storeName}</h3>
-                    <h3 className='text-2xl font-bold uppercase text-center'>{topPick.storeLocation}</h3>
-                    <h4 className='font-normal text-lg mt-1 text-justify'>{topPick.storeDescription}</h4>
+                    </Swiper>
+                    <h3 className='text-3xl mt-3 font-bold uppercase'>{topPick.storeName}</h3>
+                    <h3 className='text-xl font-bold uppercase'>{topPick.storeLocation}</h3>
+                    <h4 className='font-normal text-lg'>{topPick.storeDescription}</h4>
                 </div>
             </div>
             <Footer />
@@ -62,4 +65,4 @@ const TopPicksId = () => {
     );
 };
 
-export default TopPicksId
+export default TopPicksId;
