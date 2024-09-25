@@ -42,7 +42,7 @@ const TopPicksId = () => {
                         }}
                         pagination={{ clickable: true }}
                         loop={true}
-                        style={{ width: '100%', maxWidth: '600px' }} // Set max width for mobile compatibility
+                        style={{ width: '100%', maxWidth: '600px' }} 
                     >
                         {images.map((imgSrc, index) => (
                             <SwiperSlide key={index} style={{ display: 'flex', justifyContent: 'center' }}>
