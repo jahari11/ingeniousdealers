@@ -379,6 +379,12 @@ button {
     gap: 20px;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+    z-index: 10;
+    color: black; 
+}
+
 .image--item {
     width: 294px;
     height: 255px;

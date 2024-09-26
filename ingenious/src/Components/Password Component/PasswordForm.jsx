@@ -10,7 +10,7 @@ const PasswordForm = ({ setPassword }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passwordInput === 'ingeniousdealers') {
+    if (passwordInput === 'ingeniousdealers518') {
       setPassword(passwordInput);
     } else {
       setErrorMessage('Incorrect password.');

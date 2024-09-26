@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../Components/Home Components/Navbar';
 import Footer from '../Components/Footer';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules'; // Correctly import Navigation and Pagination
 import 'swiper/swiper-bundle.css';
 
 const TopPicksId = () => {
@@ -34,13 +35,15 @@ const TopPicksId = () => {
             <div className='section'>
                 <div className='flex justify-center flex-col items-center my-8 p-4'>
                     <Swiper
+                        modules={[Navigation, Pagination]} // Include both Navigation and Pagination
                         spaceBetween={10}
                         slidesPerView={1}
                         autoplay={{
                             delay: 3000,
                             disableOnInteraction: false,
                         }}
-                        pagination={{ clickable: true }}
+                        pagination={{ clickable: true }} // Clickable pagination
+                        navigation // Enable navigation arrows
                         loop={true}
                         style={{ width: '100%', maxWidth: '600px' }} 
                     >

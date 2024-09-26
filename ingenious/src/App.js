@@ -25,7 +25,7 @@ export default function App() {
     const [loggedIn, setLoggedIn] = useState(false);
 
     const handlePasswordSubmit = (enteredPassword) => {
-        if (enteredPassword === 'ingeniousdealers') {
+        if (enteredPassword === 'ingeniousdealers518') {
             setLoggedIn(true)
         } else {
 
