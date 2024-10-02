@@ -16,7 +16,8 @@ const Register = () => {
     >
         <Navbar />
 
-<section className="relative flex flex-wrap lg:h-screen lg:items-center">
+<section className="section">
+  <div className='flex items-center justify-center'>
   <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
     <div className="mx-auto max-w-lg text-center">
       <h1 className="text-2xl font-bold sm:text-3xl">Become a Dealer today.</h1>
@@ -27,7 +28,7 @@ const Register = () => {
       </p>
     </div>
 
-    <form action="#" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+    <form action="#" className="mx-auto mb-0 max-w-md space-y-4">
       <div>
         <label htmlFor="username" className="sr-only">Username</label>
         <div className="relative">
@@ -75,6 +76,19 @@ const Register = () => {
           />
         </div>
       </div>
+
+      <div>
+        <label htmlFor="social" className="sr-only">Social Media Links</label>
+        <div className="relative">
+          <input
+            type="text"
+            id="social"
+            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Enter social media links"
+          />
+        </div>
+      </div>
+
 
       <div>
         <label htmlFor="subscription" className="sr-only">Subscription Tier</label>
@@ -133,14 +147,7 @@ const Register = () => {
       </div>
     </form>
   </div>
-
-  <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-    <img
-      alt=""
-      src={Logo}
-      className="absolute inset-0 h-full w-full object-cover"
-    />
-  </div>
+</div>
 </section>
         <Footer />
     </motion.div>
