@@ -5,7 +5,8 @@ import Navbar from '../Components/Home Components/Navbar';
 import { motion } from 'framer-motion';
 import Footer from '../Components/Footer';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css'; 
+import 'swiper/swiper-bundle.css';
+import { Link } from 'react-router-dom';
 
 const ServiceId = () => {
     const { id } = useParams();
@@ -20,8 +21,9 @@ const ServiceId = () => {
         "https://readymadeui.com/images/product6.webp",
         "https://readymadeui.com/images/product7.webp",
         "https://readymadeui.com/images/product3.webp",
-        // Add more image URLs as needed
     ];
+
+    const email = "exmaplemail123@gmail.com"
 
     return (
         <motion.div
@@ -57,10 +59,17 @@ const ServiceId = () => {
                     </Swiper>
                     <h3 className='text-3xl mt-3 font-bold uppercase'>{service.dealerName}</h3>
                     <h3 className='text-2xl font-bold uppercase'>{service.dealerCity}</h3>
+                    
                     <h4 className='font-semibold text-xl'>{service.dealerType}</h4>
                     <h4 className='text-xl text-justify'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </h4>
+                    <h3 className='text-2xl font-bold uppercase'>Contact Us</h3>
+                    <Link href={`mailto:${email}`}>examplemail123@gmail.com</Link>
+                    <div className='flex gap-4'>
+                    <Link to='https://www.instagram.com' className='text-2xl'><i className='fa-brands fa-instagram'></i></Link>
+                    <Link to='https://www.x.com' className='text-2xl'><i className='fa-brands fa-x-twitter'></i></Link>
+                    </div>
                 </div>
             </div>
             <Footer />
