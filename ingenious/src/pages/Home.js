@@ -6,7 +6,6 @@ import PhotoGrid from "../Components/Home Components/PhotoGrid"
 import { motion } from 'framer-motion'
 import Footer from "../Components/Footer"
 import HomeCard from "../Components/Home Components/HomeCard"
-import ShopCard from "../Components/Shop Components/ShopCard"
 
 const Home = () => {
     
@@ -21,11 +20,12 @@ const Home = () => {
             <Navbar />
             <DiscoverImage />
             <ServiceSearch />
-            <div className="service-search-text">
-                <span className="text-[1.1rem] font-bold text-center">Ingenious Dealers stands as a vibrant fashion platform and a creative marketplace, pioneering innovative approaches to showcase businesses and provide essential services within our dynamic network.</span>
+            <div className="service-search-text px-4 py-8">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-center text-gray-700 max-w-4xl mx-auto block leading-relaxed">
+                    Ingenious Dealers stands as a vibrant fashion platform and a creative marketplace, pioneering innovative approaches to showcase businesses and provide essential services within our dynamic network.
+                </span>
             </div>
             <Amenities />
-            <ShopCard />
             <PhotoGrid />
             <Footer />
         </motion.div>

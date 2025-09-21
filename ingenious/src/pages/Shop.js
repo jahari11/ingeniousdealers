@@ -1,5 +1,4 @@
 import React from "react";
-import LocalDealerGrid from "../Components/Shop Components/LocalDealerGrid";
 import StoreGrid from "../Components/Shop Components/StoreGrid";
 
 import Footer from "../Components/Footer"
@@ -17,8 +16,7 @@ const Shop = () => {
         transition={{duration: 0.8}}
         >
         <Navbar />
-        <h2 className="text-xl font-bold uppercase text-black text-center sm:text-7xl m-7">Shop With Your Local Dealers</h2>
-        <LocalDealerGrid />
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold uppercase text-black text-center px-4 py-8">Shop With Your Local Dealers</h2>
         <StoreMap />
         <StoreGrid />
         <Footer />

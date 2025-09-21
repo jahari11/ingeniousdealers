@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import Home from "./pages/Home"
 import Shop from "./pages/Shop"
 import Services from "./pages/Services";
@@ -24,12 +24,28 @@ export default function App() {
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
 
+    // Check localStorage on component mount
+    useEffect(() => {
+        const savedLoginState = localStorage.getItem('ingeniousLoggedIn');
+        if (savedLoginState === 'true') {
+            setLoggedIn(true);
+        }
+    }, []);
+
     const handlePasswordSubmit = (enteredPassword) => {
         if (enteredPassword === 'ingeniousdealers518') {
-            setLoggedIn(true)
+            setLoggedIn(true);
+            // Save login state to localStorage
+            localStorage.setItem('ingeniousLoggedIn', 'true');
         } else {
 
         }
+    };
+
+    // Function to handle logout (optional - you can add this later)
+    const handleLogout = () => {
+        setLoggedIn(false);
+        localStorage.removeItem('ingeniousLoggedIn');
     };
     return (
         <div>
