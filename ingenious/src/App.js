@@ -16,6 +16,7 @@ import IngeniousStore from "./pages/IngeniousStore";
 import IgStoreId from "./pages/IgStoreId";
 import ServiceId from "./pages/ServiceId";
 import TopPicksId from "./pages/TopPicksId";
+import SubscriberDashboard from "./Components/Admin/SubscriberDashboard";
 
 
 export default function App() {
@@ -64,6 +65,7 @@ export default function App() {
                 <Route path="/ingenious-store/:id" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <IgStoreId />} />
                 <Route path="/service/:id" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <ServiceId />} />
                 <Route path="/local-dealers/:id" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <TopPicksId />} />
+                <Route path="/admin/subscribers" element={!loggedIn ? <PasswordForm setPassword={handlePasswordSubmit} /> : <SubscriberDashboard />} />
             </Routes>
             </AnimatePresence>
         </div>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 import IngeniousBackground from '../../img/IngeniousPasswordPage.mp4'
+import API_BASE_URL from '../../config/api'
 
 
 const PasswordForm = ({ setPassword }) => {
@@ -11,6 +12,23 @@ const PasswordForm = ({ setPassword }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showDealerLogin, setShowDealerLogin] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [subscriberCount, setSubscriberCount] = useState(null);
+
+  // Fetch subscriber count on component mount
+  useEffect(() => {
+    const fetchSubscriberCount = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/launch-subscribers`);
+        if (response.ok) {
+          const data = await response.json();
+          setSubscriberCount(data.count);
+        }
+      } catch (error) {
+        // Silently fail - don't show error for count
+      }
+    };
+    fetchSubscriberCount();
+  }, []);
 
   const validatePhoneNumber = (phone) => {
     const cleaned = phone.replace(/[\s\-()]/g, '');
@@ -34,7 +52,7 @@ const PasswordForm = ({ setPassword }) => {
 
     try {
       setIsSubmitting(true);
-      await fetch('http://localhost:4000/api/phone-numbers', {
+      const response = await fetch(`${API_BASE_URL}/api/phone-numbers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -42,11 +60,25 @@ const PasswordForm = ({ setPassword }) => {
           timestamp: new Date().toISOString(),
           source: 'password_page'
         })
-      }).catch(() => {});
-      setSuccessMessage('Thanks! We\'ll text you updates.');
+      });
+      
+      if (response.ok) {
+        setSuccessMessage('🎉 Thanks! We\'ll text you updates about our launch!');
+        setPhoneNumber('');
+        // Refresh subscriber count
+        const countResponse = await fetch(`${API_BASE_URL}/api/launch-subscribers`);
+        if (countResponse.ok) {
+          const countData = await countResponse.json();
+          setSubscriberCount(countData.count);
+        }
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('Unable to connect. Please check your internet connection.');
     } finally {
       setIsSubmitting(false);
-      setPhoneNumber('');
     }
   };
 
@@ -138,6 +170,13 @@ const PasswordForm = ({ setPassword }) => {
               <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Get Launch Updates</h1>
               <p className="text-base text-gray-200">Enter your phone number to receive updates</p>
               <p className="text-xs text-gray-300 mt-1">We\'ll only use it for important notifications</p>
+              {subscriberCount !== null && (
+                <div className="mt-3 px-3 py-1 bg-white/10 rounded-full inline-block">
+                  <span className="text-sm text-white/80">
+                    {subscriberCount} {subscriberCount === 1 ? 'person' : 'people'} signed up
+                  </span>
+                </div>
+              )}
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
