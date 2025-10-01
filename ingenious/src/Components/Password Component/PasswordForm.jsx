@@ -12,27 +12,32 @@ const PasswordForm = ({ setPassword }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showDealerLogin, setShowDealerLogin] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [subscriberCount, setSubscriberCount] = useState(null);
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
 
-  // Fetch subscriber count on component mount
-  useEffect(() => {
-    const fetchSubscriberCount = async () => {
-      try {
-        const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`);
-        if (response.ok) {
-          const data = await response.json();
-          setSubscriberCount(data.count);
-        }
-      } catch (error) {
-        // Silently fail - don't show error for count
-      }
-    };
-    fetchSubscriberCount();
-  }, []);
+
+  const formatPhoneNumber = (value) => {
+    // Remove all non-digit characters
+    const phoneNumber = value.replace(/\D/g, '');
+    
+    // Limit to 10 digits for US phone numbers
+    const limitedPhoneNumber = phoneNumber.slice(0, 10);
+    
+    // Don't format if it's empty
+    if (limitedPhoneNumber.length === 0) return '';
+    
+    // Format based on length
+    if (limitedPhoneNumber.length <= 3) {
+      return limitedPhoneNumber;
+    } else if (limitedPhoneNumber.length <= 6) {
+      return `${limitedPhoneNumber.slice(0, 3)}-${limitedPhoneNumber.slice(3)}`;
+    } else {
+      return `${limitedPhoneNumber.slice(0, 3)}-${limitedPhoneNumber.slice(3, 6)}-${limitedPhoneNumber.slice(6)}`;
+    }
+  };
 
   const validatePhoneNumber = (phone) => {
     const cleaned = phone.replace(/[\s\-()]/g, '');
-    const phoneRegex = /^[+]?[0-9]{10,15}$/;
+    const phoneRegex = /^[0-9]{10}$/;
     return phoneRegex.test(cleaned);
   };
 
@@ -46,12 +51,17 @@ const PasswordForm = ({ setPassword }) => {
       return;
     }
     if (!validatePhoneNumber(phoneNumber)) {
-      setErrorMessage('Please enter a valid phone number.');
+      setErrorMessage('Please enter a valid 10-digit US phone number.');
+      return;
+    }
+    if (!privacyAgreed) {
+      setErrorMessage('Please agree to our privacy policy to continue.');
       return;
     }
 
     try {
       setIsSubmitting(true);
+      
       const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`, {
         method: 'POST',
         headers: { 
@@ -68,18 +78,13 @@ const PasswordForm = ({ setPassword }) => {
       if (response.ok) {
         setSuccessMessage('🎉 Thanks! We\'ll text you updates about our launch!');
         setPhoneNumber('');
-        // Refresh subscriber count
-        const countResponse = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`);
-        if (countResponse.ok) {
-          const countData = await countResponse.json();
-          setSubscriberCount(countData.count);
-        }
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error || 'Something went wrong. Please try again.');
       }
     } catch (error) {
-      setErrorMessage('Unable to connect. Please check your internet connection.');
+      console.error('Phone number submission error:', error);
+      setErrorMessage('Unable to connect to Supabase. Please check your internet connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -172,14 +177,7 @@ const PasswordForm = ({ setPassword }) => {
             <div className="text-center mb-6">
               <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Get Launch Updates</h1>
               <p className="text-base text-gray-200">Enter your phone number to receive updates</p>
-              <p className="text-xs text-gray-300 mt-1">We\'ll only use it for important notifications</p>
-              {subscriberCount !== null && (
-                <div className="mt-3 px-3 py-1 bg-white/10 rounded-full inline-block">
-                  <span className="text-sm text-white/80">
-                    {subscriberCount} {subscriberCount === 1 ? 'person' : 'people'} signed up
-                  </span>
-                </div>
-              )}
+              <p className="text-xs text-gray-300 mt-1">We'll only use it for important notifications</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -188,13 +186,17 @@ const PasswordForm = ({ setPassword }) => {
                 <input
                   className='w-full pl-10 pr-14 py-3.5 rounded-xl text-white placeholder-white/70 bg-white/10 border border-white/20 backdrop-blur-md shadow-lg shadow-black/20 focus:outline-none focus:ring-4 focus:ring-white/10 focus:border-white/40 transition'
                   type="tel"
-                  placeholder='Enter Phone Number'
+                  placeholder='Enter 10-digit US Phone Number'
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))}
                   disabled={isSubmitting}
                   style={{width:'100%'}}
                 />
-                <button type='submit' disabled={isSubmitting} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2.5 border border-white/30 text-white bg-gradient-to-br from-white/30 to-white/10 hover:from-white/40 hover:to-white/20 shadow-md shadow-black/30 transition" aria-label="Submit phone number">
+                <button type='submit' disabled={isSubmitting || !privacyAgreed} className={`absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-2.5 border border-white/30 text-white shadow-md shadow-black/30 transition ${
+                  isSubmitting || !privacyAgreed 
+                    ? 'bg-white/10 cursor-not-allowed opacity-50' 
+                    : 'bg-gradient-to-br from-white/30 to-white/10 hover:from-white/40 hover:to-white/20'
+                }`} aria-label="Submit phone number">
                   {isSubmitting ? (
                     <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
@@ -203,16 +205,29 @@ const PasswordForm = ({ setPassword }) => {
                 </button>
               </div>
 
+              {/* Privacy Agreement Checkbox */}
+              <div className="flex items-start space-x-3">
+                <input
+                  type="checkbox"
+                  id="privacy-agreement"
+                  checked={privacyAgreed}
+                  onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                  disabled={isSubmitting}
+                  className="mt-1 h-4 w-4 text-blue-600 bg-white/10 border-white/20 rounded focus:ring-white/20 focus:ring-2"
+                />
+                <label htmlFor="privacy-agreement" className="text-xs text-gray-300 leading-relaxed">
+                  I agree to receive text messages from Ingenious Dealers about launch updates, promotions, and important announcements. 
+                  <span className="text-white/80 font-medium"> Message and data rates may apply.</span> 
+                  You can opt out at any time by replying STOP.
+                </label>
+              </div>
+
               {errorMessage && (
                 <div className="text-red-300 text-sm text-center">{errorMessage}</div>
               )}
               {successMessage && (
                 <div className="text-green-300 text-sm text-center">{successMessage}</div>
               )}
-
-              <div className="text-[11px] text-center text-gray-300 opacity-80">
-                We may use your number to send important updates about our launch.
-              </div>
             </form>
           </motion.div>
         </div>

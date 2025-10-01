@@ -19,11 +19,13 @@ const SubscriberDashboard = () => {
   const fetchSubscribers = async () => {
     try {
       setLoading(true);
+      
       const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`, {
         headers: {
           'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`
         }
       });
+      
       if (response.ok) {
         const data = await response.json();
         setSubscribers(data.phoneNumbers || []);
@@ -31,10 +33,12 @@ const SubscriberDashboard = () => {
         // Use stats from the API response
         setStats(data.stats || { total: 0, active: 0, today: 0 });
       } else {
-        setError('Failed to fetch subscribers');
+        const errorData = await response.json();
+        setError(errorData.error || 'Failed to fetch subscribers');
       }
     } catch (err) {
-      setError('Unable to connect to server');
+      console.error('Failed to fetch subscribers:', err);
+      setError('Unable to connect to Supabase. Please check your internet connection.');
     } finally {
       setLoading(false);
     }
@@ -54,10 +58,12 @@ const SubscriberDashboard = () => {
       if (response.ok) {
         fetchSubscribers(); // Refresh the list
       } else {
-        setError('Failed to update subscriber status');
+        const errorData = await response.json();
+        setError(errorData.error || 'Failed to update subscriber status');
       }
     } catch (err) {
-      setError('Unable to update subscriber status');
+      console.error('Failed to update subscriber status:', err);
+      setError('Unable to update subscriber status. Please check your connection.');
     }
   };
 

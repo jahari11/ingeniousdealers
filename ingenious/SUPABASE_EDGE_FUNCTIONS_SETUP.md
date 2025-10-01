@@ -24,12 +24,25 @@ supabase link --project-ref your-project-ref
 
 ### 3. Set up environment variables
 
+**Option A: Use the setup script (Recommended)**
+```bash
+node create-env.js
+```
+
+**Option B: Create manually**
 Create a `.env.local` file in your project root:
 
 ```env
-REACT_APP_SUPABASE_URL=your-supabase-project-url
+REACT_APP_SUPABASE_URL=https://your-project-ref.supabase.co
 REACT_APP_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
+
+**Get your credentials:**
+1. Go to https://supabase.com/dashboard
+2. Select your project
+3. Go to Settings → API
+4. Copy the Project URL and anon/public key
+5. Replace the placeholder values in `.env.local`
 
 ### 4. Deploy the Edge Function
 
