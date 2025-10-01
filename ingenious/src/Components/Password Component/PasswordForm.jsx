@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 import IngeniousBackground from '../../img/IngeniousPasswordPage.mp4'
-import API_BASE_URL from '../../config/api'
+import { EDGE_FUNCTIONS_URL } from '../../config/supabase'
 
 
 const PasswordForm = ({ setPassword }) => {
@@ -18,7 +18,7 @@ const PasswordForm = ({ setPassword }) => {
   useEffect(() => {
     const fetchSubscriberCount = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/launch-subscribers`);
+        const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`);
         if (response.ok) {
           const data = await response.json();
           setSubscriberCount(data.count);
@@ -52,9 +52,12 @@ const PasswordForm = ({ setPassword }) => {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch(`${API_BASE_URL}/api/phone-numbers`, {
+      const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`
+        },
         body: JSON.stringify({
           phoneNumber: phoneNumber.trim(),
           timestamp: new Date().toISOString(),
@@ -66,7 +69,7 @@ const PasswordForm = ({ setPassword }) => {
         setSuccessMessage('🎉 Thanks! We\'ll text you updates about our launch!');
         setPhoneNumber('');
         // Refresh subscriber count
-        const countResponse = await fetch(`${API_BASE_URL}/api/launch-subscribers`);
+        const countResponse = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`);
         if (countResponse.ok) {
           const countData = await countResponse.json();
           setSubscriberCount(countData.count);

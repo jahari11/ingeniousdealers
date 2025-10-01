@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import API_BASE_URL from '../../config/api';
+import { EDGE_FUNCTIONS_URL } from '../../config/supabase';
 
 const SubscriberDashboard = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -19,21 +19,17 @@ const SubscriberDashboard = () => {
   const fetchSubscribers = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/api/phone-numbers`);
+      const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers`, {
+        headers: {
+          'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setSubscribers(data.phoneNumbers || []);
         
-        // Calculate stats
-        const total = data.phoneNumbers.length;
-        const active = data.phoneNumbers.filter(sub => sub.is_active).length;
-        const today = data.phoneNumbers.filter(sub => {
-          const today = new Date().toDateString();
-          const subDate = new Date(sub.created_at).toDateString();
-          return today === subDate;
-        }).length;
-        
-        setStats({ total, active, today });
+        // Use stats from the API response
+        setStats(data.stats || { total: 0, active: 0, today: 0 });
       } else {
         setError('Failed to fetch subscribers');
       }
@@ -46,9 +42,12 @@ const SubscriberDashboard = () => {
 
   const toggleSubscriberStatus = async (phoneNumber, isActive) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/phone-numbers/${phoneNumber}`, {
+      const response = await fetch(`${EDGE_FUNCTIONS_URL}/phone-numbers/${phoneNumber}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`
+        },
         body: JSON.stringify({ is_active: !isActive })
       });
       
