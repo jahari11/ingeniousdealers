@@ -287,6 +287,7 @@ button {
     position: relative;
     gap: 20px;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 .service-search input,
@@ -301,6 +302,7 @@ button {
     color: white;
     font-size: 16px;
     width: 400px;
+    max-width: 100%;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     appearance: none;
@@ -320,11 +322,13 @@ button {
     padding: 10px;
 }
 
-.input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+    .input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 
 .input-icon-wrapper {
     position: absolute;
@@ -401,6 +405,7 @@ button {
     color: white !important;
     font-size: 16px !important;
     width: 400px !important;
+    max-width: 100% !important;
     transition: all 0.3s ease !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
     appearance: none !important;
@@ -1962,14 +1967,26 @@ select {
 
     .service-page-select {
         width: 100% !important;
+        max-width: 100% !important;
         padding: 16px 18px 16px 60px !important;
         font-size: 14px !important;
+    }
+
+    /* Ensure input containers on services page are full width on mobile */
+    .service-card-container .input-container {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .input-icon-wrapper {
         width: 30px;
         height: 30px;
         left: 12px;
+    }
+
+    .input-container {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .input-container i {
@@ -2025,12 +2042,25 @@ select {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .service-search .input-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .service-search input,
+    .service-search select {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .service-search-submit-btn {
         width: 100%;
         max-width: 400px;
-        margin-top: 10px;
+        margin-top: 0;
     }
 
     .service-search-title {
@@ -2043,6 +2073,13 @@ select {
         font-size: 16px;
         margin-bottom: 20px;
         padding: 0 20px;
+    }
+
+    /* Services page dropdowns mobile styles */
+    .service-card-container .input-container,
+    .service-card-container > div .input-container {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .services--header {
