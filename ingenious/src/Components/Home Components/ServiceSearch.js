@@ -1,7 +1,28 @@
-import React from "react"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 export default function ServiceSearch () {
+    const [selectedService, setSelectedService] = useState("");
+    const [selectedCity, setSelectedCity] = useState("");
+    const navigate = useNavigate();
+
+    const services = ["photographers", "venues", "tailoring", "models"];
+    const cities = ["new york", "los angeles", "atlanta", "miami", "houston"];
+
+    const handleSubmit = () => {
+        const params = new URLSearchParams();
+        if (selectedService) {
+            params.append('service', selectedService);
+        }
+        if (selectedCity) {
+            params.append('city', selectedCity);
+        }
+        
+        const query = params.toString();
+        navigate(query ? `/services?${query}` : '/services');
+    };
+
     return (
         <>
         <div className="service-search-wrapper">
@@ -12,14 +33,43 @@ export default function ServiceSearch () {
                     <div className="input-icon-wrapper">
                         <i className="fa-solid fa-briefcase service-icon"></i>
                     </div>
-                    <input type="text" className="input-txt" placeholder="Search your service"/>
+                    <select 
+                        className="input-txt" 
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                    >
+                        <option value="">Search your service</option>
+                        {services.map((service) => (
+                            <option key={service} value={service}>
+                                {service.charAt(0).toUpperCase() + service.slice(1)}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="input-container">
                     <div className="input-icon-wrapper">
                         <i className="fa-solid fa-map-marker-alt city-icon"></i>
                     </div>
-                    <input type="text" className="input-txt" placeholder="Choose your city"/>
+                    <select 
+                        className="input-txt" 
+                        value={selectedCity}
+                        onChange={(e) => setSelectedCity(e.target.value)}
+                    >
+                        <option value="">Choose your city</option>
+                        {cities.map((city) => (
+                            <option key={city} value={city}>
+                                {city.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                            </option>
+                        ))}
+                    </select>
                 </div>
+                <button 
+                    className="service-search-submit-btn"
+                    onClick={handleSubmit}
+                    type="button"
+                >
+                    <i className="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
         </div>
         </>

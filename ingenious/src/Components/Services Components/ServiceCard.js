@@ -1,59 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import ServicesData from '../Services Components/servicesData'; // Adjust the path as necessary
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+
+// Match exactly with home page values
+const serviceOptions = ['photographers', 'venues', 'tailoring', 'models'];
+const cityOptions = ['new york', 'los angeles', 'atlanta', 'miami', 'houston'];
+
+const formatLabel = (value) =>
+  value
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+const normalize = (value = '') => value.toLowerCase().trim();
 
 const ServiceCard = () => {
-  // State for filter values
+  const [searchParams] = useSearchParams();
+
   const [filterType, setFilterType] = useState('');
   const [filterCity, setFilterCity] = useState('');
 
-  const [typesOptions, setTypesOptions] = useState([]);
-  const [citiesOptions, setCitiesOptions] = useState([]);
-
   useEffect(() => {
-    // Example: Fetch options from a database
-    // Replace the following arrays with API data fetching
-    setTypesOptions([...new Set(ServicesData.map(item => item.dealerType))]);
-    setCitiesOptions([...new Set(ServicesData.map(item => item.dealerCity))]);
-  }, []);
+    const serviceParam = searchParams.get('service');
+    const cityParam = searchParams.get('city');
+    setFilterType(serviceParam ? normalize(serviceParam) : '');
+    setFilterCity(cityParam ? normalize(cityParam) : '');
+  }, [searchParams]);
 
-  // Filter data based on selected filter values
+  // Filter data based on selected filter values - matching with normalized values
   const filteredData = ServicesData.filter(dealer => {
-    return (
-      (filterType === '' || dealer.dealerType === filterType) &&
-      (filterCity === '' || dealer.dealerCity === filterCity)
-    );
+    const dealerType = normalize(dealer.dealerType);
+    const dealerCity = normalize(dealer.dealerCity);
+    
+    const typeMatch = filterType === '' || dealerType === filterType;
+    const cityMatch = filterCity === '' || dealerCity === filterCity;
+    
+    return typeMatch && cityMatch;
   });
 
   return (
     <div className="py-12 px-4">
+      {/* Title and Description */}
+      <div className="text-center mb-4 flex flex-col items-center">
+        <h3 className="service-search-title mb-2">Choose Your Services</h3>
+        <p className="service-search-description mx-auto">Filter by service type and location to find exactly what you need</p>
+      </div>
+      
       {/* Filter Inputs */}
-      <div className='flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 bg-gray-100 py-8 px-4 mb-8 rounded-lg max-w-4xl mx-auto'>
-        <div className="w-full sm:w-auto">
-          <label htmlFor="dealerType" className="block text-sm text-black font-bold mb-2">Dealer Type</label>
+      <div className='flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 px-4 max-w-4xl mx-auto'>
+        <div className="input-container">
+          <div className="input-icon-wrapper">
+            <i className="fa-solid fa-briefcase service-icon"></i>
+          </div>
           <select
             id="dealerType"
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="w-full sm:w-48 px-4 py-3 border-2 border-black text-black text-sm outline-none bg-white hover:bg-gray-50 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200">
+            className="service-page-select input-txt">
             <option value="">All Types</option>
-            {typesOptions.map((type, index) => (
-              <option className='capitalize' key={index} value={type}>{type}</option>
+            {serviceOptions.map((type) => (
+              <option key={type} value={type}>{formatLabel(type)}</option>
             ))}
           </select>
         </div>
 
-        <div className="w-full sm:w-auto">
-          <label htmlFor="dealerCity" className="block text-sm font-bold text-black mb-2">Dealer City</label>
+        <div className="input-container">
+          <div className="input-icon-wrapper">
+            <i className="fa-solid fa-map-marker-alt city-icon"></i>
+          </div>
           <select
             id="dealerCity"
             value={filterCity}
             onChange={(e) => setFilterCity(e.target.value)}
-            className="w-full sm:w-48 px-4 py-3 border-2 border-black text-black text-sm outline-none bg-white hover:bg-gray-50 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+            className="service-page-select input-txt"
           >
             <option value="">All Cities</option>
-            {citiesOptions.map((city, index) => (
-              <option className='capitalize' key={index} value={city}>{city}</option>
+            {cityOptions.map((city) => (
+              <option key={city} value={city}>{formatLabel(city)}</option>
             ))}
           </select>
         </div>

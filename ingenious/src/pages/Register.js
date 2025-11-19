@@ -106,21 +106,18 @@ const Register = () => {
 
 
       <div>
-        <label htmlFor="subscription" className="block text-sm font-semibold text-gray-700 mb-2">Subscription Tier</label>
+        <label htmlFor="subscription" className="block text-sm font-semibold text-gray-700 mb-2">Subscription Plan</label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <i className="fa-solid fa-tags text-gray-400"></i>
           </div>
           <select
             id="subscription"
+            name="subscription"
             className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 appearance-none bg-white"
+            defaultValue="pro"
           >
-            <option value="">Select your role</option>
-            <option value="photographer">Photographer</option>
-            <option value="model">Model</option>
-            <option value="seamstress">Seamstress</option>
-            <option value="designer">Designer</option>
-            <option value="local-dealer">Local Dealer</option>
+            <option value="pro">Pro - $20/month</option>
           </select>
         </div>
       </div>

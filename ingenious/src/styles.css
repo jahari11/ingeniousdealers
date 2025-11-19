@@ -289,7 +289,8 @@ button {
     padding: 20px;
 }
 
-.service-search input {
+.service-search input,
+.service-search select {
     padding: 18px 20px 18px 65px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
@@ -302,12 +303,21 @@ button {
     width: 400px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    appearance: none;
+    cursor: pointer;
 }
 
-.service-search input:focus {
+.service-search input:focus,
+.service-search select:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     background: rgba(0, 0, 0, 0.9);
+}
+
+.service-search select option {
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 10px;
 }
 
 .input-container {
@@ -369,6 +379,126 @@ button {
 .input-txt::placeholder {
     color: #9ca3af;
     font-weight: 400;
+}
+
+/* Dropdown arrow for select elements */
+.service-search select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 50px;
+}
+
+/* Service page dropdowns - matching home page style */
+.service-page-select {
+    padding: 18px 20px 18px 65px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    outline: none !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    margin: 0 !important;
+    color: white !important;
+    font-size: 16px !important;
+    width: 400px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 20px center !important;
+    padding-right: 50px !important;
+}
+
+.service-page-select:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+.service-page-select option {
+    background: rgba(0, 0, 0, 0.95) !important;
+    color: white !important;
+    padding: 10px !important;
+}
+
+/* Service Detail Page Swiper Styling */
+.service-detail-swiper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.service-detail-swiper .swiper-button-next,
+.service-detail-swiper .swiper-button-prev {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.service-detail-swiper .swiper-button-next:hover,
+.service-detail-swiper .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.service-detail-swiper .swiper-button-next::after,
+.service-detail-swiper .swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.service-detail-swiper .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+    width: 12px;
+    height: 12px;
+}
+
+.service-detail-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #3b82f6;
+}
+
+/* Submit button with arrow icon */
+.service-search-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.service-search-submit-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 6px 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.service-search-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.service-search-submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.service-search-submit-btn:hover i {
+    transform: translateX(3px);
 }
 
 /* Enhanced Stores List Styles */
@@ -1823,10 +1953,17 @@ select {
     }
 
    
-    .service-search input {
+    .service-search input,
+    .service-search select {
         width: 100%;
         padding: 16px 18px 16px 60px;
         font-size: 14px;
+    }
+
+    .service-page-select {
+        width: 100% !important;
+        padding: 16px 18px 16px 60px !important;
+        font-size: 14px !important;
     }
 
     .input-icon-wrapper {
@@ -1887,6 +2024,13 @@ select {
     .service-search {
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    .service-search-submit-btn {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 10px;
     }
 
     .service-search-title {

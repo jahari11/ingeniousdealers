@@ -7,17 +7,14 @@ const Cards = () => {
       <h1 className='text-center text-4xl font-bold'>
         Ingenious Dealers Subscription Tier
       </h1>
-      <p className='subscription-sub text-center text-gray-500 mt-4'>
-        Choose the plan that's right for your business.
-      </p>
-      <p className='subscription-sub text-center text-gray-500 mb-8'>
-        Whether you just started or well down the path, we're here to assist you!
+      <p className='subscription-sub text-center text-gray-500 mt-4 mb-8'>
+        Get access to all our premium features with our subscription plan.
       </p>
       
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex justify-center">
         {CardContent.map((card) => (
           <div key={card.id}
-            className="relative flex flex-col bg-clip-border rounded-xl bg-black text-white shadow-gray-900/20 shadow-md  p-6 sm:p-8 m-4 min-h-[30rem]">
+            className="relative flex flex-col bg-clip-border rounded-xl bg-black text-white shadow-gray-900/20 shadow-md  p-6 sm:p-8 m-4 min-h-[30rem] max-w-md w-full">
             
             <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none bg-clip-border border-white/10">
               <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
