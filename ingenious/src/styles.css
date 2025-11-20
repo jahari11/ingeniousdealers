@@ -386,6 +386,71 @@ button {
     margin-top: -4px;
 }
 
+/* Responsive adjustments for small screens: stack tiles in a column */
+@media (max-width: 640px) {
+    .service-category-slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 12px;
+        overflow-x: visible;
+        overflow-y: visible;
+        justify-content: center;
+    }
+
+    .service-category-tile {
+        min-width: 0;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        padding: 12px 16px;
+        gap: 8px;
+        border-radius: 10px;
+        margin: 0 auto;
+        flex-shrink: 0;
+    }
+
+    .service-tile-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .service-tile-icon i {
+        font-size: 18px;
+    }
+
+    .service-tile-text {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .service-tile-hint {
+        font-size: 11px;
+        opacity: 0.85;
+    }
+}
+
+@media (max-width: 420px) {
+    .service-category-tile {
+        max-width: 360px;
+        padding: 10px 14px;
+    }
+
+    .service-tile-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .service-tile-icon i {
+        font-size: 16px;
+    }
+
+    .service-tile-text {
+        font-size: 13px;
+    }
+}
+
 .service-search {
     display: flex;
     justify-content: center;
