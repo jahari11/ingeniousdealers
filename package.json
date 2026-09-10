@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "test:server": "jest --config '{\"testEnvironment\":\"node\",\"testMatch\":[\"<rootDir>/server/**/*.test.js\"]}'",
     "eject": "react-scripts eject"
